@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			
+		label {
+    display:block;
+    }
+    .textColor {
+    color: #a8bbf8;
+    }
+    h2{
+     width: 100%;
+    text-align:center;
+    }
+			
+		</style>
+	</head>
+	<body>
+	<h2>Otobus Bıletı</h2>
+		<div class="container">
+			<div class="row">
+			<div class= "col-md-6">
+					<label>KAKKIŞ TARIHI</label><div class="textColor"><p th:text ="${date}"/></div>
+					</div>
+					<div class= "col-md-6">
+					<label>Name of Primary Passenger:</label><div class="textColor"><p th:text ="${name}"/></div>
+					</div>
+					</div>
+					<div class = "row">
+					<div class= "col-md-6">
+					<label>BILET NUMARASI:</label><div class="textColor">#123456</div>
+					</div>
+					<div class= "col-md-6">
+					<label>YOLCULUK YAPACAK YOLCU SAYISI</label><div class="textColor"><p th:text ="${noOfPass}"/></div>
+					</div>
+					</div>
+					<div class="row">
+					<div class= "col-md-6">
+					<label>KALKIS:</label><div class="textColor" ><p th:text ="${From}"/></div>
+					</div>
+					<div class= "col-md-6">
+					<label>VARIS NOKTASI:</label><div class="textColor"><p th:text ="${to}"/></div>
+					</div>
+				</div>
+				<div class="row">
+				<div class= "col-md-6">
+					<label>OTOBUS ADI:</label><div class="textColor"><p th:text ="${busName}"/></div>
+					</div>
+				</div>
+			</div>
+
+	</body>
+</html>

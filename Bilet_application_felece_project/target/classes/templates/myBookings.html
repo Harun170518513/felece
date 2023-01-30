@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>FELECE OTOBUS RESERVASYON SISTEMI</title>
+<link rel="stylesheet" 
+ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<style>
+    .navbar {
+        background-color: cadetblue;
+    }
+    .anchor{
+    margin: 6px;
+    background-color: #d9edf7;
+    border-color: #d9edf7;
+    }
+   
+</style>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                            <h1>otobus rezervasyon panosu</h1>
+                            <div class="container">
+                            <div class="row">
+                            <div class="col-md-3">
+                           <h4> MERHABA,HOSGELDINIZ <span th:text ="*{userDetails}"></span> </h4></div>
+                             <div class="col-md-3">
+                           <a th:href="@{/dashboard}" class="btn anchor" style="margin-left:600px"> <i class="fa fa-arrow-circle-o-left"></i>Gosterge Paneli</a>
+                           </div>
+                           <div class="col-md-3">
+                           <a th:href="@{/logout}" class="btn anchor" style="margin-left:500px"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Cikis yap</a>
+                           </div>
+          </div>
+                                       </div> 
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br><br><br><br><br>
+    <!-- Create HTML registration form -->
+    
+    
+    <div class="container">
+    <div th:if="${param.success}">
+                  <div class="alert alert-info">Bilet mailinize basarili bir sekilde gonderilmistir</div>
+                </div>
+                <div th:if="${param.successCancel}">
+                  <div class="alert alert-info">Seyahatiniz Basariyla Iptal Edildi.Geri ödeme baslatildiginda size posta gönderilecekti.</div>
+                </div>
+                <div th:if="${param.alreadyCancel}">
+                  <div class="alert alert-info" style="color: red;">Bu Geziniz Zaten Iptal Edildi.Geri ödeme baslatildiginda posta alacaksiniz.</div>
+                </div>
+                
+                
+        <div class="row">
+
+                
+
+                <form th:action="@{/myBooking}" method="get" th:object="${bookings}">
+                                
+                <table border="1" class = "table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>
+						
+							NEREDEN
+					</th>
+					<th>
+					
+							NEREYE
+					</th>
+					<th>
+					
+							HAREKET SAATI
+					</th>
+					
+				
+					<th>
+					
+							OTOBUS ADI
+					</th>
+					<th>
+
+						Yolcu Sayisi
+					</th>
+					
+					<th>
+					
+							TOTAL FIYAT
+					</th>
+					<th>
+
+							DURUM
+					</th>
+					<th>
+					
+							IPTAL ET
+					</th>
+					<th>
+
+						pdf Bilet Olustur(E-posta ile gönderilecek)
+					</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="bus : ${bookings}">
+					
+					<td th:text="${bus.fromDestination}"></td>
+					<td th:text="${bus.toDestination}"></td>
+					<td th:text="${bus.time}"></td>
+					<td th:text="${bus.BusName}"></td>
+					<td th:text="${bus.noOfPersons}"></td>
+					<td th:text="${bus.totalCalculated}"></td>
+					<td th:text="${bus.tripStatus}"></td>
+					<td> <a th:href="@{/myBooking/cancel/{id}(id=${bus.id})}" th:disabled="${bus.tripStatus eq Canceled}" class="btn btn-primary">Iptal et</a>
+					<td> <a th:href="@{/myBooking/generate/{id}(id=${bus.id})}" class="btn btn-primary">Ma?l Olustur</a>
+					
+				</tr>
+			</tbody>
+		</table>
+                
+                
+                
+                </form>
+                
+        </div>
+        </div>
+    
+    
+</body>
+
+</html>

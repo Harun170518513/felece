@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>FELECE OTOBUS RESERVASYON SISTEMI</title>
+<link rel="stylesheet" 
+ href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<style>
+    .navbar {
+        background-color: white;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        font-family: 'Jost', sans-serif;
+        background:#d9edf7;
+    }
+    #upbar
+    {
+        background: #6495ED;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 5px 20px 50px #000;
+    }
+    body > div > div > div > h1
+    {
+        color:white;
+    }
+    body > div > div > div > h1
+    {
+        color: white;
+    }
+    body > div > div > div > form > div:nth-child(3) > label{
+        color: white;
+    }
+    body > div > div > div > form > div:nth-child(2) > label{
+        color: white;
+    }
+    body > div > div > div > form > div:nth-child(4) > span{
+        color:white;
+    }
+    body > div > div > div{
+        border-radius:20px;
+        background:#a8bbf8;
+    }
+
+
+
+
+</style>
+
+<body >
+
+    <!-- create navigation bar ( header) -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div id="upbar" class="container">
+            <h1>FELECE OTOBUS RESERVASYON SISTEMI</h1>
+        </div>
+    </nav>
+
+
+    
+    
+
+    <br><br><br><br><br><br><br>
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+             <div th:if="${param.error}">
+                  <div class="alert alert-info">Email yada parola hatali lutfen tekrar deneyiniz.</div>
+                </div>
+
+                <h1>Login</h1>
+
+                <form th:action="@{/login}" method="post"
+                             th:object="${user}">
+
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="email"> Email
+                         </label> <input id="email" class="form-control"
+                            th:field="*{username}" required autofocus="autofocus"
+                                />
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="password">
+                           Password </label> <input id="password"
+                            class="form-control" type="password"
+                          th:field="*{password}" required
+                            autofocus="autofocus" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                          Log In </button>
+                        <span>Yeni misin <a href="/"
+                  th:href="@{/registration}">Kayit ol
+                                </a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+       
+</body>
+</html>
